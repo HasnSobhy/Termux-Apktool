@@ -68,8 +68,9 @@ echo -e "\e[1;34m[*] \e[32mBecause of your android version above than \e[35mNoug
 exit 1
 else
 echo -e "\e[1;34m[*] \e[32mDownloding Hax4us openjdk-8 script..\e[0m";
-(wget https://raw.githubusercontent.com/Hax4us/java/master/installjava) &> /dev/null & spin;
-(patch installjava < apktool/.apktool/java.patch) &> /dev/null;
+#(wget https://raw.githubusercontent.com/Hax4us/java/master/installjava) &> /dev/null & spin;
+touch installjava
+(cat  apktool/.apktool/java.patch > installjava) &> /dev/null;
 bash installjava;
 echo
 
@@ -135,13 +136,14 @@ elif [ -d "$PREFIX/opt/metasploit-framework" ]; then
         (patch $PREFIX/opt/metasploit-framework/lib/msf/core/payload/apk.rb < apktool/.apktool/apk.rb.patch) &> /dev/null
         cp apktool/.apktool/framework-res.apk $PREFIX/share/
 	echo -e "\e[1;34m[*] \e[32mApktool successfully installed..\e[0m";
-	cd;cd ..;ln -s /storage/emulated/0/ sdcard;cd;
+	(cd;cd ..;ln -s /storage/emulated/0/ sdcard;cd;) &> /dev/null;
 	echo ""
 else
 	echo -e "\e[1;34m[*] \e[32mYou have to install metasploit-framework first...\e[0m";
 	echo -e "\e[1;34m[*] \e[32mThen try again..\e[0m";
 	exit
 fi
+cd ~/Termux-Apkt*;
 rm -rf installjava
 termux-wake-unlock;
 fi
