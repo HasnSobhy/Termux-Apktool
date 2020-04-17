@@ -45,12 +45,12 @@ EOF \
 \
 \
 termux-chroot
+bash \
 	\
 	\
 	\
 	\
-	\
-	signapk2  \
+	apktool2  \
 	\
 	\
 	\
